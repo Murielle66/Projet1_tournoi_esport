@@ -8,7 +8,7 @@ class Tournoi:
         self.match_finale =  None
     def generer_demies(self):
         # on crée deux matchs avec les 4 équipes
-        print(f"\n---Génération des demi-finales du tournoi{self.nom}---")
+        print(f"\n---Génération des matchs du tournoi{self.nom}---")
         match1 = Match(self.equipes[0],self.equipes[1])
         match2 = Match(self.equipes[2],self.equipes[3])
         self.matchs_demi= [match1, match2]

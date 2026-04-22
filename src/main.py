@@ -44,24 +44,7 @@ team_d.ajouter_joueur(j8)
 admin = Organisatrice("Alex Carter","Super-User")
 print(f"Admin :{admin.nom}, Role : {admin.role}")
 
-#6. Test de l'encapsulation
-print(f"--- TEST ENCAPSULATION ---")
-j1.ajouter_points(10)
-print(f"Score de {j1.pseudo} : {j1.obtenir_score()} points")
-j5.ajouter_points(9)
-print(f"Score de {j5.pseudo} : {j5.obtenir_score()} points")
-j8.ajouter_points(8)
-print(f"Score de {j8.pseudo} : {j8.obtenir_score()} points")
-
-#7. Test de la modularité
-print(f" --- TEST DE MODULARITE ---")
-nouveau_match = Match(ma_team, team_b)
-nouveau_match.designer_vainqueur(ma_team.nom_equipe)
-print(f"  Match test  : {nouveau_match.equipe1.nom_equipe}  vs  {nouveau_match.equipe2.nom_equipe}")
-print(f"Vainqueur du match : {nouveau_match.vainqueur.nom_equipe}")
-
-
- #8. Organisation du Tournoi 
+ #6. Organisation du Tournoi 
 
 # Liste des participants
 participants = [ma_team, team_b, team_c, team_d ]  
@@ -73,16 +56,19 @@ gagnant1 = m1.vainqueur
 m2.designer_vainqueur(m2.equipe1.nom_equipe)
 gagnant2= m2.vainqueur
 
-finale = mon_tournoi.lancer_finale(gagnant1, gagnant2)
-finale.designer_vainqueur(gagnant1.nom_equipe)
-
 print("\n===================================")
 print(f"  TOURNOI : {mon_tournoi.nom}")
 print("=================================")
 
-print(f"Demi-finale 1 :{m1.equipe1.nom_equipe} vs {m1.equipe2.nom_equipe}")
+print(f"Demi-finale 1 : {m1.equipe1.nom_equipe} vs {m1.equipe2.nom_equipe}")
+print(f" --- GAGNANT :  {gagnant1.nom_equipe} ---")
 print(f"Demi-finale 2 : {m2.equipe1.nom_equipe} vs {m2.equipe2.nom_equipe}")
+print(f" --- GAGNANT :  {gagnant2.nom_equipe} ---")
 print(f"Finale : {gagnant1.nom_equipe} vs {gagnant2.nom_equipe}")
+
+finale = mon_tournoi.lancer_finale(gagnant1, gagnant2)
+finale.designer_vainqueur(gagnant1.nom_equipe)
+print(f" Vainqueur : {finale.vainqueur.nom_equipe}")
 
 # 9. Sauvegarde  et fermeturedb.sauvegarder_joueur(j1)
 db.sauvegarder_joueur(j1)
