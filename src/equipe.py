@@ -1,10 +1,21 @@
 class Equipe:
-    def __init__(self, nom_equipe):
+    #Représente une équipe d'e-sport composée de plusieurs joueurs
+    def __init__(self, nom_equipe :str):
         self.nom_equipe = nom_equipe
-        self.liste_joueurs = [] #ici on stockera des objets joueur
+        self.liste_joueurs = [] 
+        #Stockage interne des objets joueur
+        @property
+        def nom_equipe(self):
+             return self._nom_equipe
+        @property
+        def liste_joueurs(self):
+        #Retourne la liste des joueurs
+             return self._liste_joueurs
+        
     def ajouter_joueur(self, joueur):
-            if joueur in self.liste_joueurs:
-                 print("Le joueur est déja dans l'équipe.")
+            #ajoute un objet joueur à l'équipe s'il n'y est pas déja
+            if joueur in self._liste_joueurs:
+                 print(f" ERREUR :Le joueur {joueur.pseudo} est déja dans l'équipe.")
                  return
-            self.liste_joueurs.append(joueur) 
-            print(f"Le joueur {joueur.pseudo} a rejoint l'équipe {self.nom_equipe} . ")
+            self._liste_joueurs.append(joueur) 
+            print(f" SUCCES : Le joueur {joueur.pseudo} a rejoint l'équipe {self._nom_equipe} . ")
