@@ -4,9 +4,9 @@ class Match:
         self.equipe2 =equipe2
         self.vainqueur =None
     def designer_vainqueur(self, nom_vainqueur):
-       if nom_vainqueur == self.equipe1.nom_equipe :
+       if nom_vainqueur.strip().lower() == self.equipe1.nom_equipe.strip().lower() :
            self.vainqueur=self.equipe1
-       elif nom_vainqueur == self.equipe2:
+       elif nom_vainqueur.strip().lower() == self.equipe2.nom_equipe.strip().lower:
             self.vainqueur =self.equipe2
        else:
            print(f"Nom du vainqueur invalide")
