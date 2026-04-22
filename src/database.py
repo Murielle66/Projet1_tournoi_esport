@@ -26,3 +26,7 @@ class Database :
          self.conn.commit()
     def fermer(self):
          self.conn.close()
+    def recuperer_tous_les_joueurs(self):
+         self.cursor.execute("SELECT pseudo, score FROM joueurs")
+         return self.cursor.fetchall() #retourne une liste de tuples[(pseudo, score), . . .]
+    
