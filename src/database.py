@@ -1,32 +1,38 @@
 import sqlite3
 class Database :
-    def __init__(self, db_name="tournoi.db"):
-        #Connexion automatique
-        self.conn=sqlite3.connect(db_name)
-        self.cursor=self.conn.cursor()
-        self.creer_tables()
-    def creer_tables(self):
-         #Creation des tables
-         self.cursor.execute('''CREATE TABLE IF NOT EXISTS joueurs(
+    # Gère la persistance des données du tournoi avec SQLite
+    def __init__(self, db_name :str="tournoi.db"):
+        # Initialisation de la Connexion et du curseur
+        self._conn=sqlite3.connect(db_name)
+        self._cursor=self._conn.cursor()
+        self._creer_tables()
+    def _creer_tables(self):
+         #Creation la structure de la base de données 
+         self._cursor.execute('''CREATE TABLE IF NOT EXISTS joueurs(
                              id INTEGER PRIMARY KEY AUTOINCREMENT,
                              pseudo TEXT UNIQUE ,
                              score INTEGER DEFAULT 0
                              )
                              ''')
-         self.conn.commit()
+         self._conn.commit()
 
     def sauvegarder_joueur(self, joueur):
-         # encapsulation du score
-         self.cursor.execute('''
+         # Sauvegarde ou met à jourun objet Joueur dans la base
+         sql ='''
                              INSERT INTO joueurs
                              (pseudo, score) VALUES(? ,?)
                              ON CONFLICT(pseudo)DO
                              UPDATE SET score=excluded.score
-                             ''' ,(joueur.pseudo, joueur.obtenir_score()))
-         self.conn.commit()
-    def fermer(self):
-         self.conn.close()
+                             ''' 
+         self._cursor.execute(sql ,(joueur._pseudo, joueur._Joueur__score_total))
+         self._conn.commit()
+   
     def recuperer_tous_les_joueurs(self):
-         self.cursor.execute("SELECT pseudo, score FROM joueurs")
-         return self.cursor.fetchall() #retourne une liste de tuples[(pseudo, score), . . .]
+         # Retourne la liste de tous les joueurs enregistrés
+         self._cursor.execute("SELECT pseudo, score FROM joueurs")
+         return self._cursor.fetchall() 
+    
+    def fermer(self):
+         # Ferme propement la connexion à la base de données
+         self._conn.close()
     

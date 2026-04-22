@@ -1,4 +1,4 @@
-from src.entites import Personne
+from entites import Personne
 class Joueur(Personne):
     #Représente le compétiteur e-sport
     def __init__(self, nom: str , pseudo: str): 

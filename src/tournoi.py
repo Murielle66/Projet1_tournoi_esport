@@ -1,4 +1,4 @@
-from src.match import Match
+from match import Match
 
 class Tournoi:
     # Gère la logique de progression d'un tournoi e-sport
@@ -11,7 +11,7 @@ class Tournoi:
         # Créer les deux matchs  de demi_finales à partir de  4 équipes
         print(f"\n---Génération des matchs du tournoi{self._nom}---")
          # vérification de sécurité 
-        if len(self._equipe)< 4 :
+        if len(self._equipes)< 4 :
            print(f"Erreur : il faut au moins 4 équipes pour générer des demi-finales")
            return None
         

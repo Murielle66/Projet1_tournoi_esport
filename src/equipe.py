@@ -2,7 +2,7 @@ class Equipe:
     #Représente une équipe d'e-sport composée de plusieurs joueurs
     def __init__(self, nom_equipe :str):
         self.nom_equipe = nom_equipe
-        self.liste_joueurs = [] 
+        self._liste_joueurs = [] 
         #Stockage interne des objets joueur
         @property
         def nom_equipe(self):
@@ -18,4 +18,4 @@ class Equipe:
                  print(f" ERREUR :Le joueur {joueur.pseudo} est déja dans l'équipe.")
                  return
             self._liste_joueurs.append(joueur) 
-            print(f" SUCCES : Le joueur {joueur.pseudo} a rejoint l'équipe {self._nom_equipe} . ")
+            print(f" SUCCES : Le joueur {joueur._pseudo} a rejoint l'équipe {self.nom_equipe} . ")
