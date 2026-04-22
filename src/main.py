@@ -2,6 +2,7 @@ from match import Match
 from entites import Organisatrice
 from joueur import Joueur
 from equipe import Equipe
+from database import Database
 #1. Création des joueurs
 j1 = Joueur(" Zyro")
 j2 = Joueur(" Keen")
@@ -24,3 +25,10 @@ nouveau_match = Match(ma_team, autre_team)
 #print(f"Match entre {ma_team} et {autre_team}")
 nouveau_match.designer_vainqueur("Les Apex")
 print(f"Vainqueur du match : {nouveau_match.vainqueur.nom_equipe}")
+#8. Initialisation de la base
+db = Database()
+#9. Sauvegarde des joueurs après match 
+db.sauvegarder_joueur(j1)
+db.sauvegarder_joueur(j2)
+print(f">>> Données sauvegardées dans tournoi.db")
+db.fermer
