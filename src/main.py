@@ -13,13 +13,14 @@ ma_team.ajouter_joueur(j2)
 #4.Vérification
 print(f"Nombre de joueurs dans l'équipe : {len(ma_team.liste_joueurs)}")
 #5. Test de l'héritage
-admin = Organisatrice("Murielle","Super-User")
+admin = Organisatrice("Alex Carter","Super-User")
 print(f"Admin :{admin.nom}, Role : {admin.role}")
 #6. Test de l'encapsulation
 j1.ajouter_points(10)
 print(f"Nouveau score de {j1.pseudo} : {j1.obtenir_score()} points")
 #7. Test de la modularité
-autre_team = Equipe("Aigles de cotonou")
+autre_team = Equipe("Les Nexus")
 nouveau_match = Match(ma_team, autre_team)
+#print(f"Match entre {ma_team} et {autre_team}")
 nouveau_match.designer_vainqueur("Les Apex")
-print(f"Vainqueur du match : {nouveau_mach.vainqueur.nom_equipe}")
+print(f"Vainqueur du match : {nouveau_match.vainqueur.nom_equipe}")
