@@ -2,6 +2,8 @@ import pytest
 from  joueur import Joueur
 from  equipe import Equipe
 from tournoi import Tournoi
+from entites import Organisatrice  
+from entites import Personne
 def test_creation_joueur_valide():
     #Vérifie qu'un joueur est bien créé .        
     j = Joueur("Kevin", "Zérion")
@@ -29,3 +31,21 @@ def test_tournoi_trop_peu_equipes():
         equipes_insuffisantes = [Equipe("Team A"), Equipe("Team B")]
         t = Tournoi("Fail Tournoi",equipes_insuffisantes)
         t.generer_demies() 
+    def test_heritage_personne():
+        # Vérifie que joueur et Organisatrice héritent correctement de personne
+        j = Joueur ("Wazyr" ,"Zyro")
+        admin = Organisatrice("Alex CARTER", "Admin")
+         #Test :Le joueur a t'il bien un nom ? (attribut de personne)
+        assert j.nom == "wazyr"
+         #Test : L'admin est t'il bien considéré comme une instance de personne ?
+        assert isinstance(admin, Personne)
+        assert admin.nom == "Alex CARTER"
+def test_modularite_composition():
+     #Vérifie que lesmodules Equipe et Joueur collaborent sans erreur
+     equipe = Equipe("Les Apex")
+     joueur = Joueur(" Bob" ,"Genos")
+     equipe.ajouter_joueur(joueur)
+    
+     #On vérifie que que l'objet dans la liste est bien l'objet d'origine
+     assert equipe.ma_liste_joueurs[0].pseudo == "Genos"
+     assert  equipe.liste_joueurs[0].nom == "Bob"   

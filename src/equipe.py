@@ -1,3 +1,4 @@
+
 class Equipe:
     #Représente une équipe d'e-sport composée de plusieurs joueurs
     def __init__(self, nom_equipe :str):
@@ -8,7 +9,7 @@ class Equipe:
         def nom_equipe(self):
              return self._nom_equipe
         @property
-        def liste_joueurs(self):
+        def ma_liste_joueurs(self):
         #Retourne la liste des joueurs
              return self._liste_joueurs
         
