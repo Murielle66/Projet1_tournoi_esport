@@ -9,11 +9,10 @@ class Tournoi:
         self._match_finale =  None
     def generer_demies(self):
         # Créer les deux matchs  de demi_finales à partir de  4 équipes
-        print(f"\n---Génération des matchs du tournoi{self._nom}---")
          # vérification de sécurité 
-        if len(self._equipes)< 4 :
-           print(f"Erreur : il faut au moins 4 équipes pour générer des demi-finales")
-           return None
+        if len(self._equipes) != 4 :
+           raise ValueError(f"Format invalide : 4équipes requises, {len(self._equipes)} fournies.")
+        print(f"\n---Génération des matchs du tournoi{self._nom}---")
         
         match1 = Match(self._equipes[0],self._equipes[1])
         match2 = Match(self._equipes[2],self._equipes[3])

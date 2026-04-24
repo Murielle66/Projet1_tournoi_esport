@@ -1,6 +1,7 @@
 import pytest
 from  joueur import Joueur
 from  equipe import Equipe
+from tournoi import Tournoi
 def test_creation_joueur_valide():
     #Vérifie qu'un joueur est bien créé .        
     j = Joueur("Kevin", "Zérion")
@@ -22,3 +23,9 @@ def test_pseudo_vide():
         j = Joueur("Kevin", "Zérion")
         equipe.ajouter_joueur(j)
         assert len(equipe.liste_joueurs) == 1
+def test_tournoi_trop_peu_equipes():
+    #Vérifie que le tournoi refuse moins de 4 équipes 
+    with pytest.raises(ValueError):
+        equipes_insuffisantes = [Equipe("Team A"), Equipe("Team B")]
+        t = Tournoi("Fail Tournoi",equipes_insuffisantes)
+        t.generer_demies() 
