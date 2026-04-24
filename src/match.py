@@ -2,6 +2,8 @@ class Match:
     #Gère le déroulement et l'issue d'une confrontation entre deux équipes
 
     def __init__(self, equipe1, equipe2):
+        if equipe1 == equipe2: 
+            raise ValueError("Un match ne peut pas opposer une équipe à elle-meme.")
         self._equipe1 =equipe1
         self._equipe2 =equipe2
         self._vainqueur =None

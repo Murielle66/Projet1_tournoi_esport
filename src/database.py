@@ -18,6 +18,7 @@ class Database :
 
     def sauvegarder_joueur(self, joueur):
          # Sauvegarde ou met à jourun objet Joueur dans la base
+      try:
          sql ='''
                              INSERT INTO joueurs
                              (pseudo, score) VALUES(? ,?)
@@ -26,6 +27,8 @@ class Database :
                              ''' 
          self._cursor.execute(sql ,(joueur._pseudo, joueur._Joueur__score_total))
          self._conn.commit()
+      except sqlite3.Error as e:
+          print(f"Erreur Critique Base de Données :{e}")
    
     def recuperer_tous_les_joueurs(self):
          # Retourne la liste de tous les joueurs enregistrés
