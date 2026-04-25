@@ -43,9 +43,9 @@ def test_tournoi_trop_peu_equipes():
 def test_modularite_composition():
      #Vérifie que lesmodules Equipe et Joueur collaborent sans erreur
      equipe = Equipe("Les Apex")
-     joueur = Joueur(" Bob" ,"Genos")
+     joueur = Joueur("Bob" ,"Genos")
      equipe.ajouter_joueur(joueur)
     
      #On vérifie que que l'objet dans la liste est bien l'objet d'origine
-     assert equipe.ma_liste_joueurs[0].pseudo == "Genos"
+     assert equipe.liste_joueurs[0].pseudo == "Genos"
      assert  equipe.liste_joueurs[0].nom == "Bob"   
