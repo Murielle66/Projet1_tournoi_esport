@@ -21,5 +21,5 @@ def test_scenario_complet_tournoi():
     assert mon_tournoi.nom == "Test Cup"
     db.fermer()
     print(f"Test d'intégration réussi !")
-if__name__ == "__main__": # type: ignore
-test_scenario_complet_tournoi()
+if __name__ == "__main__": 
+ test_scenario_complet_tournoi()
