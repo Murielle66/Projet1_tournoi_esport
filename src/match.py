@@ -7,8 +7,8 @@ class Match:
         self._equipe1 =equipe1
         self._equipe2 =equipe2
         self._vainqueur =None
-        @property
-        def vainqueur(self):
+    @property
+    def vainqueur(self):
          # Retourne l'Objet Equipe qui a gagné le match .
          return self._vainqueur   
     def designer_vainqueur(self, nom_vainqueur :str):
