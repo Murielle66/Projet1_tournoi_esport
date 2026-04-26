@@ -16,7 +16,7 @@ class Tournoi:
         for i in range (0, 8, 2):
             match = Match(self._equipes[i], self._equipes[i+1])
             self._quarts.append(match)
-            return self._quarts
+        return self._quarts
     def generer_demies(self, gagnants_quarts: list):
         # Créer les deux matchs  de demi_finales à partir des vainqueurs des quarts
          # vérification de sécurité 

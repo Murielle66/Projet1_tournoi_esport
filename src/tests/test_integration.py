@@ -30,7 +30,7 @@ def test_scenario_complet_tournoi():
         # On simule que l'équipe 1 gagne à chaque fois
       match.designer_vainqueur(match._equipe1.nom_equipe)
       gagnants_quarts.append(match.vainqueur)
-      print(f"Liste des qualifiés : {gagnants_quarts}")
+    print(f"Liste des qualifiés : {gagnants_quarts}")
     assert len(gagnants_quarts) == 4
     print(">> Quarts de finale terminés : 4 vainqueurs qualifiés.")
 
@@ -45,7 +45,7 @@ def test_scenario_complet_tournoi():
     print(">> Demi-finales terminées : 2 finalistes qualifiés.")
 
     # 6. ÉTAPE 3 : FINALE
-    match_finale = mon_tournoi.generer_finale(gagnants_demies[0], gagnants_demies[1])
+    match_finale = mon_tournoi.lancer_finale(gagnants_demies[0], gagnants_demies[1])
     match_finale.designer_vainqueur(gagnants_demies[0].nom_equipe)
     
     print(f">> FINALE TERMINÉE. Vainqueur : {match_finale.vainqueur.nom_equipe}")
