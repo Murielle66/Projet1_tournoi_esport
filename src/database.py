@@ -35,7 +35,24 @@ class Database :
          self._cursor.execute("SELECT pseudo, score FROM joueurs")
          return self._cursor.fetchall() 
     
+    def supprimer_joueur(self, pseudo):
+         #Supprime un joueur définitivement de la base de données.
+        query = "DELETE FROM joueurs WHERE pseudo = ?"
+        self._cursor.execute(query, (pseudo,))
+        self._conn.commit()
+
+    def modifier_pseudo_joueur(self, ancien_pseudo, nouveau_pseudo):
+        # Met à jour le pseudo d'un joueur en vérifiant s'il n'existe pas déjà.
+        try:
+            query = "UPDATE joueurs SET pseudo = ? WHERE pseudo = ?"
+            self._cursor.execute(query, (nouveau_pseudo, ancien_pseudo))
+            self._conn.commit()
+            return True
+        except Exception as e:
+            print(f"Erreur lors de la modification : {e}")
+            return False
+    
     def fermer(self):
-         # Ferme propement la connexion à la base de données
+         # Ferme la connexion à la base de données
          self._conn.close()
     
