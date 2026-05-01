@@ -19,24 +19,24 @@ def test_pseudo_vide():
     # Vérifie que le système refuse un pseudo vide.
     with pytest.raises(ValueError):
         Joueur("Kévin","")
-    def test_ajout_joueur_equipe():
+def test_ajout_joueur_equipe():
         # Vérifie la composition de l'équipe .
         equipe = Equipe("Titans")
         j = Joueur("Kevin", "Zérion")
         equipe.ajouter_joueur(j)
         assert len(equipe.liste_joueurs) == 1
 def test_tournoi_trop_peu_equipes():
-    #Vérifie que le tournoi refuse moins de 4 équipes 
+    #Vérifie que le tournoi refuse moins de 8 équipes 
     with pytest.raises(ValueError):
         equipes_insuffisantes = [Equipe("Team A"), Equipe("Team B")]
         t = Tournoi("Fail Tournoi",equipes_insuffisantes)
         t.generer_demies() 
-    def test_heritage_personne():
+def test_heritage_personne():
         # Vérifie que joueur et Organisatrice héritent correctement de personne
         j = Joueur ("Wazyr" ,"Zyro")
         admin = Organisatrice("Alex CARTER", "Admin")
          #Test :Le joueur a t'il bien un nom ? (attribut de personne)
-        assert j.nom == "wazyr"
+        assert j.nom == "Wazyr"
          #Test : L'admin est t'il bien considéré comme une instance de personne ?
         assert isinstance(admin, Personne)
         assert admin.nom == "Alex CARTER"
