@@ -140,20 +140,29 @@ class TournamentApp:
         # Création
         lb = tk.Listbox(self.content_frame, selectmode=tk.MULTIPLE, bg="#2d2d2d", fg="white", font=("Arial", 11))
         lb.pack(pady=10, padx=40, fill="x")
-        occ = [j.pseudo for eq in self.equipes_selectionnees for j in eq.liste_joueurs]
+        occ = [j.pseudo.strip().lower() for eq in self.equipes_selectionnees for j in eq.liste_joueurs]
         for p, s in self.db.recuperer_tous_les_joueurs():
-            if p not in occ: lb.insert(tk.END, f"  {p}")
+            if p.strip().lower() not in occ: lb.insert(tk.END, f"  {p.strip()}")
             
         en = tk.Entry(self.content_frame, justify="center", bg="#2d2d2d", fg="white", font=("Arial", 12))
         en.insert(0, "NOM ÉQUIPE"); en.pack(pady=5)
 
         def add_eq():
             idx = lb.curselection()
-            if len(idx) == 2:
-                eq = Equipe(en.get())
+            nom_equipe_saisi =en.get().strip()
+            # Securite anti doublons pour les noms d'équipe
+            noms_existants = [eq.nom_equipe.strip().lower() for eq in self.equipes_selectionnees]
+            if nom_equipe_saisi.lower()in noms_existants:
+                messagebox.showerror("Erreur",f"L'équipe '{nom_equipe_saisi}'existe déjà !")
+                return
+            if len(idx) == 2 and nom_equipe_saisi and nom_equipe_saisi != "NOM EQUIPE":
+
+                eq = Equipe(nom_equipe_saisi)
                 for i in idx: eq.ajouter_joueur(Joueur("Inconnu", lb.get(i).strip()))
                 self.equipes_selectionnees.append(eq)
                 self.afficher_creation_equipe()
+            else:
+                messagebox.showwarning("Attention","Sélectionnez exactement 2 joueurs et entrez un nom unique.")
         tk.Button(self.content_frame, text="CRÉER DUO", bg="orange", font=("Arial", 10, "bold"), command=add_eq).pack(pady=15)
 
     def del_eq(self, eq):
